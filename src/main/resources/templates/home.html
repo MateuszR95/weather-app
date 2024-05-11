@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
+</head>
+<body>
+<div class="logo-container">
+    <img src="../static/img/weather.jpg" th:src="@{/img/weather.jpg}"
+         alt="Twoja pogoda" class="pic"/>
+    <h1>Sprawdź pogodę dla Twojego miasta!</h1>
+</div>
+
+<form class="login-form" th:action="@{/weather}" method="post">
+    <input name="cityName" placeholder="Podaj nazwę miasta" class="form-item">
+    <br>
+    <button type="submit" class="form-item">Sprawdź</button>
+    <div th:if="${error}">
+        <span th:text="${error}" style="color: red"></span>
+    </div>
+</form>
+
+</body>
+</html>

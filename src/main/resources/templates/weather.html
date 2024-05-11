@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pogoda w wybranym mieście</title>
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
+</head>
+<body>
+<div class="logo-container">
+    <img src="../static/img/weather.jpg" th:src="@{/img/weather.jpg}"
+         alt="Twoja pogoda" class="pic"/>
+</div>
+
+<div class="info-container">
+    <a th:href="@{/}">Wróć do strony głównej</a>
+<h2 th:text="|Pogoda w mieście ${cityName} w dniu ${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}|">Oto pogoda w wybranym przez ciebie mieście</h2>
+
+    <table class="table-container">
+        <tr>
+            <th>Parametr</th>
+            <th>Wartość</th>
+        </tr>
+        <tr>
+            <td>Zachmurzenie</td>
+            <td th:text="${weather.description}">Zachmurzenie</td>
+        </tr>
+        <tr>
+            <td>Temperatura</td>
+            <td th:text="|${#numbers.formatDecimal(weather.temperature, 0, 1)}&deg;C|">Temperatura</td>
+        </tr>
+        <tr>
+            <td>Odczuwalna temperatura</td>
+            <td th:text="|${#numbers.formatDecimal(weather.perceivedTemperature, 0, 1)}&deg;C|">Odczuwalna temperatura</td>
+        </tr>
+        <tr>
+            <td>Minimalna temperatura</td>
+            <td th:text="|${#numbers.formatDecimal(weather.minTemperature, 0, 1)}&deg;C|">Minimalna temperatura</td>
+        </tr>
+        <tr>
+            <td>Maksymalna temperatura</td>
+            <td th:text="|${#numbers.formatDecimal(weather.maxTemperature, 0, 1)}&deg;C|">Maksymalna temperatura</td>
+        </tr>
+        <tr>
+            <td>Ciśnienie atmosferyczne</td>
+            <td th:text="|${weather.pressure}hPa|">Ciśnienie</td>
+        </tr>
+        <tr>
+            <td>Wilgotność</td>
+            <td th:text="|${weather.humidity}%|">Wilgotność</td>
+        </tr>
+        <tr>
+            <td>Widoczność</td>
+            <td th:text="|${weather.visibility}m|">Widoczność</td>
+        </tr>
+        <tr>
+            <td>Prędkość wiatru</td>
+            <td th:text="|${weather.windSpeed}km/h|">Prędkość wiatru</td>
+        </tr>
+        <tr>
+            <td>Wschód słońca</td>
+            <td th:text="${#temporals.format(weather.sunrise, 'HH:mm')}">Wschód słońca</td>
+        </tr>
+        <tr>
+            <td>Zachód słońca</td>
+            <td th:text="${#temporals.format(weather.sunset, 'HH:mm')}">Zachód słońca</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>
