@@ -12,7 +12,7 @@
     <h1>Sprawdź pogodę dla Twojego miasta!</h1>
 </div>
 
-<form class="login-form" th:action="@{/weather}" method="post">
+<form class="login-form" th:action="@{/weather}" method="get">
     <input name="cityName" placeholder="Podaj nazwę miasta" class="form-item">
     <br>
     <button type="submit" class="form-item">Sprawdź</button>

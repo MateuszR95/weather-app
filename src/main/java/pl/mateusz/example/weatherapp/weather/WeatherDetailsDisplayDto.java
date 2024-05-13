@@ -1,4 +1,4 @@
-package pl.mateusz.example.weatherapp.dto;
+package pl.mateusz.example.weatherapp.weather;
 
 
 import lombok.Data;

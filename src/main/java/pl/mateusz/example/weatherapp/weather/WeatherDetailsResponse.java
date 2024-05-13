@@ -1,10 +1,10 @@
-package pl.mateusz.example.weatherapp.model;
+package pl.mateusz.example.weatherapp.weather;
 
 import lombok.Data;
 import java.util.Map;
 
 @Data
-public class WeatherDetailsResponse {
+class WeatherDetailsResponse {
 
     private Map<String, Double> coord;
     private WeatherInfo[] weather;

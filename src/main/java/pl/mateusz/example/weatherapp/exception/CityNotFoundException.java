@@ -1,4 +1,4 @@
-package pl.mateusz.example.weatherapp.exceptions;
+package pl.mateusz.example.weatherapp.exception;
 
 public class CityNotFoundException extends RuntimeException {
     public CityNotFoundException() {

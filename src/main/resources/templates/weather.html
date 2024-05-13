@@ -7,8 +7,14 @@
 </head>
 <body>
 <div class="logo-container">
-    <img src="../static/img/weather.jpg" th:src="@{/img/weather.jpg}"
-         alt="Twoja pogoda" class="pic"/>
+    <div th:switch="${weather.description}">
+        <img th:case="'zachmurzenie duże'" src="../static/img/clouds.jpg" th:src="@{/img/clouds.jpg}" alt="zachmurzenie" class="pic">
+        <img th:case="'bezchmurnie'" src="../static/img/weather-clear.jpg" th:src="@{/img/weather-clear.jpg}" alt="bezchmurnie" class="pic">
+        <img th:case="'pochmurnie'" src="../static/img/overcast.jpg" th:src="@{/img/overcast.jpg}" alt="pochmurnie" class="pic">
+        <img th:case="'zachmurzenie umiarkowane'" src="../static/img/broken-clouds.jpg" th:src="@{/img/broken-clouds.jpg}" alt="zachmurzenie umiarkowane" class="pic">
+        <img th:case="'zachmurzenie małe'" src="../static/img/scattered-clouds.jpg" th:src="@{/img/scattered-clouds.jpg}" alt="zachmurzenie małe" class="pic">
+        <img th:case="*" src="../static/img/weather.jpg" th:src="@{/img/weather.jpg}" alt="logo" class="pic">
+    </div>
 </div>
 
 <div class="info-container">

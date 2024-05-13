@@ -3,11 +3,10 @@ package pl.mateusz.example.weatherapp.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import pl.mateusz.example.weatherapp.dto.WeatherDetailsDisplayDto;
-import pl.mateusz.example.weatherapp.model.WeatherDetailsResponse;
-import pl.mateusz.example.weatherapp.exceptions.CityNotFoundException;
-import pl.mateusz.example.weatherapp.service.WeatherService;
+import org.springframework.web.bind.annotation.RequestParam;
+import pl.mateusz.example.weatherapp.exception.CityNotFoundException;
+import pl.mateusz.example.weatherapp.weather.WeatherDetailsDisplayDto;
+import pl.mateusz.example.weatherapp.weather.WeatherService;
 
 @Controller
 public class WeatherController {
@@ -23,12 +22,12 @@ public class WeatherController {
         return "home";
     }
 
-    @PostMapping("/weather")
-    public String getWeather(Model model, String cityName) {
+    @GetMapping("/weather")
+    public String getWeather(Model model, @RequestParam(required = false) String cityName) {
         try {
-            WeatherDetailsResponse weatherForCity = weatherService.getWeatherForCity(cityName);
-            WeatherDetailsDisplayDto weatherDto = weatherService.convertToWeatherDetailsDisplayDto(weatherForCity);
-            model.addAttribute("cityName", cityName);
+            WeatherDetailsDisplayDto weatherDto = weatherService.getWeatherForCity(cityName);
+            model.addAttribute("cityName", cityName.substring(0, 1).toUpperCase() +
+                    cityName.substring(1).toLowerCase());
             model.addAttribute("weather", weatherDto);
             return "weather";
         } catch (CityNotFoundException e) {

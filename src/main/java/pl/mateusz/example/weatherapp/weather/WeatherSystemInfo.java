@@ -1,9 +1,9 @@
-package pl.mateusz.example.weatherapp.model;
+package pl.mateusz.example.weatherapp.weather;
 
 import lombok.Data;
 
 @Data
-public class WeatherSystemInfo {
+class WeatherSystemInfo {
 
     private long type;
     private long id;
